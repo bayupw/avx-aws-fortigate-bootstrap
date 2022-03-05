@@ -6,9 +6,3 @@ variable "aws_region" {
   default     = "ap-southeast-2"
   description = "AWS region"
 }
-
-variable "admin_password" {
-  type        = string
-  default     = "Aviatrix123#"
-  description = "admin password"
-}
