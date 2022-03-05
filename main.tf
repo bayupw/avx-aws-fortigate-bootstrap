@@ -1,13 +1,15 @@
+# Create 3 digit random string
 resource "random_string" "bootstrap_random_id" {
   length  = 3
   special = false
   upper   = false
 }
 
+# Concatenate with random string to avoid duplication
 locals {
-  aws_iam_role        = "bootstrap-FortiGate-S3-role-${random_string.bootstrap_random_id.id}"
-  aws_iam_role_policy = "bootstrap-FortiGate-S3-policy-${random_string.bootstrap_random_id.id}"
-  bootstrap_bucket    = "fortigate-bootstrap-bucket-${var.aws_region}-${random_string.bootstrap_random_id.id}"
+  aws_iam_role        = "${var.aws_iam_role}-${random_string.bootstrap_random_id.id}"
+  aws_iam_role_policy = "${var.aws_iam_role_policy}-${random_string.bootstrap_random_id.id}"
+  bootstrap_bucket    = "${var.bootstrap_bucket}-${var.aws_region}-${random_string.bootstrap_random_id.id}"
 }
 
 resource "aws_iam_role" "this" {
