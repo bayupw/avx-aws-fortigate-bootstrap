@@ -1,8 +1,4 @@
-variable "aws_region" {
-  type        = string
-  default     = "ap-southeast-2"
-  description = "AWS region"
-}
+data "aws_region" "current" {}
 
 variable "aws_iam_role" {
   type        = string
@@ -10,14 +6,14 @@ variable "aws_iam_role" {
   description = "Bootstrap IAM role name"
 }
 
-variable "aws_iam_role_policy" {
+variable "aws_iam_policy" {
   type        = string
   default     = "bootstrap-FortiGate-S3-policy"
-  description = "Bootstrap IAM role policy"
+  description = "Bootstrap IAM policy"
 }
 
 variable "bootstrap_bucket" {
   type        = string
-  default     = "fortigate-bootstrap-bucket"
+  default     = "bootstrap-fortigate-bucket"
   description = "Bootstrap S3 bucket name"
 }
